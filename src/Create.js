@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export default function Create() {
+export default function Create(props) {
   const initialState = {
     product_name: '',
     original_price: '',
@@ -27,6 +27,7 @@ export default function Create() {
     })
       .then(() => {
         setForm(initialState);
+        props.makeCall();
       })
       .catch(() => {
         setForm(initialState);
@@ -51,30 +52,35 @@ export default function Create() {
             handleChange(ev, 'product_name');
           }}
           placeholder="Product Name"
+          value={form.product_name}
         ></input>
         <input
           onChange={(ev) => {
             handleChange(ev, 'original_price');
           }}
           placeholder="Original Price"
+          value={form.original_price}
         ></input>
         <input
           onChange={(ev) => {
             handleChange(ev, 'sale_price');
           }}
           placeholder="Sale Price"
+          value={form.sale_price}
         ></input>
         <input
           onChange={(ev) => {
             handleChange(ev, 'product_type');
           }}
           placeholder="Product Type"
+          value={form.product_type}
         ></input>
         <input
           onChange={(ev) => {
             handleChange(ev, 'description');
           }}
           placeholder="Description"
+          value={form.description}
         ></input>
         <button onClick={handleSubmit}>Submit</button>
       </div>
